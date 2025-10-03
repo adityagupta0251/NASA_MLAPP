@@ -13,6 +13,7 @@ MODEL_PATHS: Dict[str, str] = {
 
 # Feature columns matching training data
 FEATURE_COLUMNS: List[str] = [
+    "DispositionScore",
     "OrbitalPeriod_days",
     "OrbitalPeriodUpperUnc_days",
     "OrbitalPeriodLowerUnc_days",
@@ -32,8 +33,6 @@ FEATURE_COLUMNS: List[str] = [
     "PlanetaryRadiusUpperUnc_Earthradii",
     "PlanetaryRadiusLowerUnc_Earthradii",
     "EquilibriumTemperatureK",
-    "EquilibriumTemperatureUpperUncK",
-    "EquilibriumTemperatureLowerUncK",
     "InsolationFlux_Earthflux",
     "InsolationFluxUpperUnc_Earthflux",
     "InsolationFluxLowerUnc_Earthflux",
@@ -50,8 +49,8 @@ FEATURE_COLUMNS: List[str] = [
     "StellarRadiusLowerUnc_Solarradii",
     "RA_decimaldegrees",
     "Dec_decimaldegrees",
-    "Kepler-band_mag",
-    "DispositionScore"
+    "Kepler-band_mag"
 ]
+
 
 CLASS_LABELS = {0: "FALSE_POSITIVE", 1: "CANDIDATE"}
