@@ -1,19 +1,21 @@
 from typing import Dict, List
 from pydantic import BaseModel, validator
 
+from .constants import FEATURE_COLUMNS
+
 class PredictionRequest(BaseModel):
     data: List[List[float]]
 
     @validator("data")
     def validate_numeric(cls, v):
-        # Ensure data is a list of lists
-        if not isinstance(v, list) or not all(isinstance(row, list) for row in v):
+        if not all(isinstance(row, list) for row in v):
             raise ValueError("Data must be a list of lists")
-        # Ensure all values are numeric
         for i, row in enumerate(v):
+            if len(row) != len(FEATURE_COLUMNS):
+                raise ValueError(f"Row {i} must have {len(FEATURE_COLUMNS)} features")
             for j, val in enumerate(row):
                 if not isinstance(val, (int, float)):
-                    raise ValueError(f"Value at row {i}, column {j} is not numeric: {val}")
+                    raise ValueError(f"Value at row {i}, col {j} is not numeric")
         return v
 
 class PredictionResponse(BaseModel):

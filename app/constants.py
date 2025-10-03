@@ -1,5 +1,5 @@
 import os
-from typing import Dict , List
+from typing import Dict, List
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # app/
 MODELS_DIR = os.path.join(BASE_DIR, "models")
@@ -10,8 +10,6 @@ MODEL_PATHS: Dict[str, str] = {
     "lr": os.path.join(MODELS_DIR, "logistic_model.pkl")
 }
 
-
-# Feature columns matching training data
 FEATURE_COLUMNS: List[str] = [
     "DispositionScore",
     "OrbitalPeriod_days",
@@ -51,6 +49,3 @@ FEATURE_COLUMNS: List[str] = [
     "Dec_decimaldegrees",
     "Kepler-band_mag"
 ]
-
-
-CLASS_LABELS = {0: "FALSE_POSITIVE", 1: "CANDIDATE"}
