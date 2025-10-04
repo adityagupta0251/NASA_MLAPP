@@ -11,9 +11,15 @@ from .schemas import (
     HealthResponse,
     ModelHealth
 )
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="AstroCluster Exoplanet ML API", version="1.1")
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
+)
 @app.get("/", summary="API Root")
 def root():
     return {
